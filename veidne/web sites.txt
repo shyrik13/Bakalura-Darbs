@@ -1,0 +1,22 @@
+Comparing OpenGL and DirectX
+	https://www.cprogramming.com/tutorial/openglvsdirectx.html
+	http://blog.wolfire.com/2010/01/Why-you-should-use-OpenGL-and-not-DirectX	
+
+
+Why C
+	https://www.toptal.com/c/after-all-these-years-the-world-is-still-powered-by-c-programming
+
+Why C for OpenGL
+	https://www.quora.com/Why-is-OpenGL-written-in-C-instead-of-C++
+
+
+OpenGL C Language Documentation 
+	https://www.cs.utexas.edu/users/fussell/courses/cs354/handouts/Addison.Wesley.OpenGL.Programming.Guide.8th.Edition.Mar.2013.ISBN.0321773039.pdf
+
+VLang
+	https://vlang.io/
+
+
+Languages comparing
+	https://www.slant.co/versus/113/126/~c_vs_go
+	https://www.slant.co/options/127/alternatives/~c-alternatives
