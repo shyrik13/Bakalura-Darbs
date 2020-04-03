@@ -14,7 +14,7 @@ find_package(GLEW REQUIRED STATIC)
 
 add_executable(clang
         main.c
-        objects/object.h
+        objects/object.h objects/object.c
         common/read.c common/read.h
         common/node.c common/node.h
         common/shader.c common/shader.h

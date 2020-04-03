@@ -193,7 +193,6 @@ struct Object create_object_from_file(char *file_name) {
                         u_pend = strtok(NULL, "/");
                         counter++;
                     }
-                    printf("\n");
                 }
                 pch = strtok(NULL, " ");
             }

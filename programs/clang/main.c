@@ -10,6 +10,8 @@
 
 #include "cglm/mat4.h"
 #include "cglm/cam.h"
+#include "common/node.h"
+#include <time.h>
 
 const int WINDOW_HEIGHT = 620;
 const int WINDOW_WIDTH = 1240;
@@ -64,13 +66,20 @@ void display( GLFWwindow* window )
 
     struct Object cube = create_object_from_file("cube.obj");
 
+    cube.x = -15.0f;
+    cube.y = 0.0f;
+    cube.z = -15.0f;
+
+    struct Node *object_head = NULL;
+    push(&object_head, &cube, sizeof(cube));
+
     mat4 perspective;
     glm_mat4_identity(perspective);
-    glm_perspective(glm_rad(45.0f), 4.0f / 3.0f, 0.1f, 100.0f, perspective);
+    glm_perspective(glm_rad(90.0f), 4.0f / 3.0f, 0.1f, 100.0f, perspective);
 
     mat4 view;
     glm_mat4_identity(view);
-    vec3 pos = {4.0f, 3.0f, 3.0f};
+    vec3 pos = {1.0f, 0.0f, 1.0f};
     vec3 direct = {0.0f, 0.0f, 0.0f};
     vec3 up = {0.0f, 1.0f, 0.0f};
     glm_lookat(pos, direct, up, view);
@@ -80,10 +89,6 @@ void display( GLFWwindow* window )
     float c = cosf(t);
     float s = sinf(t);
 
-    GLuint VertexArrayID;
-    glGenVertexArrays(1, &VertexArrayID);
-    glBindVertexArray(VertexArrayID);
-
     GLuint view_matrixID = (GLuint) glGetUniformLocation(programID, "view");
     GLuint perspective_matrixID = (GLuint) glGetUniformLocation(programID, "perspective");
     GLuint model_matrixID = (GLuint) glGetUniformLocation(programID, "model");
@@ -91,87 +96,115 @@ void display( GLFWwindow* window )
     GLuint texture_diffID = (GLuint) glGetUniformLocation(programID, "diffuse_tex");
     GLuint texture_normID = (GLuint) glGetUniformLocation(programID, "normal_tex");
 
-    GLuint vertexbuffer;
-    glGenBuffers(1, &vertexbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, cube.size_positions * sizeof(float), cube.positions, GL_STATIC_DRAW);
+    init_gl_object((struct Object *)(object_head->data));
 
-    GLuint uvbuffer;
-    glGenBuffers(1, &uvbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-    glBufferData(GL_ARRAY_BUFFER, cube.size_textures * sizeof(float), cube.textures, GL_STATIC_DRAW);
+    double lastTime = glfwGetTime();
+    int nbFrames = 0;
 
-    GLuint unbuffer;
-    glGenBuffers(1, &unbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, unbuffer);
-    glBufferData(GL_ARRAY_BUFFER, cube.size_normals * sizeof(float), cube.normals, GL_STATIC_DRAW);
+    float max = 15.0f;
+    float min = -15.0f;
+
+    float max0 = 0.0f;
+    float min0 = -30.0f;
+
+    float count = 0.0f;
+    srand((unsigned int)time(NULL));
 
     do {
 
-        mat4 model = {
-                {powf(c, 2), -c*s,                        s,          0.0},
-                {c*(powf(s, 2)+s), powf(c, 2)-powf(s, 3), -c*s,       0.0},
-                {s*(s-powf(c, 2)), c*(powf(s, 2)+s),      powf(c, 2), 0.0},
-                {-3.0f, 0.0f,                       0.0f,        1.0}
-        };
+        double currentTime = glfwGetTime();
+        nbFrames++;
+        if ( currentTime - lastTime >= 1.0 ){
+            printf("%f ms/frame\n", 1000.0/((double)nbFrames));
+            nbFrames = 0;
+            lastTime += 1.0;
+
+            struct Object cube = create_object_from_file("cube.obj");
+            cube.x = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min0)) + min0;
+            cube.y = (((float)(rand()) / (float)(RAND_MAX)) * (max - min)) + min;
+            //cube.z = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min)) + min;
+            cube.z = -25.0f;
+            init_gl_object(&cube);
+            push(&object_head, &cube, sizeof(cube));
+
+        }
 
         glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glUseProgram(programID);
 
-        glUniformMatrix4fv(view_matrixID, 1, GL_FALSE, &view[0][0]);
-        glUniformMatrix4fv(perspective_matrixID, 1, GL_FALSE, &perspective[0][0]);
-        glUniformMatrix4fv(model_matrixID, 1, GL_FALSE, &model[0][0]);
-        glUniform3fv(u_lightID, 1, u_light);
+        //struct ObjectList *node = head;
+        struct Node *node = object_head;
 
-        // Bind our texture in Texture Unit 0
-        glActiveTexture(GL_TEXTURE0 + 0);
-        glBindTexture(GL_TEXTURE_2D, texture_diff);
-        glUniform1i(texture_diffID, 0);
+        count = 0.0f;
+        while (node != NULL)
+        {
+            struct Object object = *(struct Object *)(node->data);
 
-        glActiveTexture(GL_TEXTURE0 + 2);
-        glBindTexture(GL_TEXTURE_2D, texture_norm);
-        glUniform1i(texture_normID, 2);
+            init_gl_object_model(&object, c, s, object.x, object.y, object.z);
 
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-        glVertexAttribPointer(
-                0,
-                3,
-                GL_FLOAT,
-                GL_FALSE,
-                0,
-                (void*)0
-        );
+            glUseProgram(programID);
 
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-        glVertexAttribPointer(
-                1,
-                2,
-                GL_FLOAT,
-                GL_FALSE,
-                0,
-                (void*)0
-        );
+            glBindVertexArray(object.vertexArrayID);
 
-        glEnableVertexAttribArray(2);
-        glBindBuffer(GL_ARRAY_BUFFER, unbuffer);
-        glVertexAttribPointer(
-                2,                                // attribute. No particular reason for 2, but must match the layout in the shader.
-                3,                                // size
-                GL_FLOAT,                         // type
-                GL_TRUE,                          // normalized?
-                0,                                // stride
-                (void*)0                          // array buffer offset
-        );
+            glUniformMatrix4fv(view_matrixID, 1, GL_FALSE, &view[0][0]);
+            glUniformMatrix4fv(perspective_matrixID, 1, GL_FALSE, &perspective[0][0]);
+            glUniformMatrix4fv(model_matrixID, 1, GL_FALSE, &(object.model[0][0]));
+            glUniform3fv(u_lightID, 1, u_light);
 
-        glDrawArrays(GL_TRIANGLES, 0, (GLsizei) cube.size_positions);
+            // Bind our texture in Texture Unit 0
+            glActiveTexture(GL_TEXTURE0 + 0);
+            glBindTexture(GL_TEXTURE_2D, texture_diff);
+            glUniform1i(texture_diffID, 0);
 
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
+            glActiveTexture(GL_TEXTURE0 + 2);
+            glBindTexture(GL_TEXTURE_2D, texture_norm);
+            glUniform1i(texture_normID, 2);
+
+            glEnableVertexAttribArray(0);
+            glBindBuffer(GL_ARRAY_BUFFER, object.vertexbuffer);
+            glVertexAttribPointer(
+                    0,
+                    3,
+                    GL_FLOAT,
+                    GL_FALSE,
+                    0,
+                    (void*)0
+            );
+
+            glEnableVertexAttribArray(1);
+            glBindBuffer(GL_ARRAY_BUFFER, object.uvbuffer);
+            glVertexAttribPointer(
+                    1,
+                    2,
+                    GL_FLOAT,
+                    GL_FALSE,
+                    0,
+                    (void*)0
+            );
+
+            glEnableVertexAttribArray(2);
+            glBindBuffer(GL_ARRAY_BUFFER, object.unbuffer);
+            glVertexAttribPointer(
+                    2,                                // attribute. No particular reason for 2, but must match the layout in the shader.
+                    3,                                // size
+                    GL_FLOAT,                         // type
+                    GL_TRUE,                          // normalized?
+                    0,                                // stride
+                    (void*)0                          // array buffer offset
+            );
+
+            glDrawArrays(GL_TRIANGLES, 0, (GLsizei) object.size_positions);
+
+            glDisableVertexAttribArray(0);
+            glDisableVertexAttribArray(1);
+            glDisableVertexAttribArray(2);
+
+            node = node->next;
+            count += 5.0f;
+        }
+
+
 
         // Swap buffers
         glfwSwapBuffers(window);
@@ -189,13 +222,21 @@ void display( GLFWwindow* window )
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
              glfwWindowShouldClose(window) == 0);
 
-    glDeleteBuffers(1, &vertexbuffer);
-    glDeleteBuffers(1, &uvbuffer);
-    glDeleteBuffers(1, &unbuffer);
+    struct Node *node = object_head;
+    while (node != NULL) {
+
+        struct Object object = *(struct Object *)(node->data);
+        glDeleteBuffers(1, &object.vertexbuffer);
+        glDeleteBuffers(1, &object.uvbuffer);
+        glDeleteBuffers(1, &object.unbuffer);
+        glDeleteVertexArrays(1, &object.vertexArrayID);
+
+        node = node->next;
+    }
+
     glDeleteProgram(programID);
     glDeleteTextures(1, &texture_diff);
     glDeleteTextures(1, &texture_norm);
-    glDeleteVertexArrays(1, &VertexArrayID);
 
 }
 
