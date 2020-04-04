@@ -22,15 +22,9 @@ mut:
 	main_wnd &glfw.Window
 	draw_fn  voidptr
 	objects  []&object.Object
-	//obj		 &object.Object
 	prog 	 int
-	//vao 	 u32
-	//vbo_v	 u32
-	//vbo_t	 u32
-	//vbo_n	 u32
 	persp  	 glm.Mat4
 	view   	 glm.Mat4
-	//model	 glm.Mat4
 	
 	texture_diff_id u32
 	texture_norm_id u32
@@ -73,15 +67,9 @@ fn main() {
 		main_wnd: 0
 		draw_fn: 0
 		objects: []
-		//obj: 0
 		prog: 0
-		//vao: 0
-		//vbo_v: 0
-		//vbo_t: 0
-		//vbo_n: 0
 		persp: common.perspective(math.radians(90.0), 4.0/3.0, 0.1, 100.0)
 		view: common.lookat(pos, direction, up)
-		//model: common.rotation_x_y_z_model(0, 3.0, 0, 0)
 		
 		texture_diff_id: 0
 		texture_norm_id: 0
@@ -201,7 +189,7 @@ fn main() {
 	}
 }
 
-fn (game mut Game) update_model(obj mut object.Object) {
+fn (game Game) update_model(obj mut object.Object) {
 	obj.model = common.rotation_x_y_z_model(game.t, obj.x, obj.y, obj.z)
 }
 
@@ -211,8 +199,7 @@ fn (game mut Game) run() {
 		for obj in game.objects {
 			game.update_model(mut obj)
 		}
-		
-		//glfw.post_empty_event() // Refresh
+
 		time.sleep_ms(1)
 		
 		game.t += 0.01
