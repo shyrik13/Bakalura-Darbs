@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 glium = "0.26.0-alpha3"
 image = "0.22"
+rand = "0.7.3"

@@ -107,7 +107,6 @@ void display( GLFWwindow* window )
     float max0 = 0.0f;
     float min0 = -30.0f;
 
-    float count = 0.0f;
     srand((unsigned int)time(NULL));
 
     do {
@@ -119,13 +118,13 @@ void display( GLFWwindow* window )
             nbFrames = 0;
             lastTime += 1.0;
 
-            struct Object cube = create_object_from_file("cube.obj");
-            cube.x = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min0)) + min0;
-            cube.y = (((float)(rand()) / (float)(RAND_MAX)) * (max - min)) + min;
+            struct Object obj = create_object_from_file("cube.obj");
+            obj.x = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min0)) + min0;
+            obj.y = (((float)(rand()) / (float)(RAND_MAX)) * (max - min)) + min;
             //cube.z = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min)) + min;
-            cube.z = -25.0f;
-            init_gl_object(&cube);
-            push(&object_head, &cube, sizeof(cube));
+            obj.z = -25.0f;
+            init_gl_object(&obj);
+            push(&object_head, &obj, sizeof(obj));
 
         }
 
@@ -136,7 +135,6 @@ void display( GLFWwindow* window )
         //struct ObjectList *node = head;
         struct Node *node = object_head;
 
-        count = 0.0f;
         while (node != NULL)
         {
             struct Object object = *(struct Object *)(node->data);
@@ -201,7 +199,6 @@ void display( GLFWwindow* window )
             glDisableVertexAttribArray(2);
 
             node = node->next;
-            count += 5.0f;
         }
 
 
