@@ -31,6 +31,7 @@ sprintf
 new_node
 glfw__swap_interval
 strconv_dot_ftoa__f32_to_decimal_exact_int
+gl__set_int_with_id
 SymGetLineFromAddr64
 asin
 tos2
@@ -49,12 +50,14 @@ utf32_to_str_no_malloc
 floor
 hash_dot_wyhash__rand_u64
 tos
+common__glm_vec3_dot
 math_dot_bits__mul_32
 gl__set_vec3
 lgamma
 unsetenv
 GetConsoleMode
 math_dot_bits__mul_64
+common__testing
 builtin__init
 os__cachedir
 math__f64_from_bits
@@ -86,12 +89,14 @@ fprintf
 glfw__window_hint
 memset
 cosf
+common__glm_vec3_scale
 math__tan
 strings__repeat_string
 glm__mat4
 WideCharToMultiByte
 math__trunc
 stbi__load_from_memory
+gl__pixel_storei
 fflush
 isatty
 math__log2
@@ -130,6 +135,7 @@ _wremove
 os__on_segfault
 string_from_wide2
 strconv_dot_ftoa__log10_pow5
+common__uni_location
 math__is_nan
 trunc
 os__cp_r
@@ -149,7 +155,6 @@ math_dot_bits__sub_32
 strerror
 ExpandEnvironmentStringsW
 MultiByteToWideChar
-glm__perspective
 math_dot_bits__rotate_left_64
 glfwGetVideoMode
 FindNextFile
@@ -158,6 +163,8 @@ gg__set_mode_wireframe
 math__abs
 closesocket
 usleep
+object__create_object
+common__rotation_x_y_z_model
 tan
 os__is_executable
 gl__generate_mipmap
@@ -186,6 +193,8 @@ time__calculate_date_from_offset
 compare_strings_by_len
 FormatMessage
 realpath
+common__glm_vec3_sub
+common__glm_vec3_norm
 strconv__parse_int
 println
 CreatePipe
@@ -225,6 +234,7 @@ gl__delete_texture
 math_dot_bits__leading_zeros_32
 time__new_time
 utf8_len
+common__glfw_get_time
 malloc
 glm__ortho_js
 gl__set_vbo
@@ -252,6 +262,7 @@ opt_none
 gl__buffer_data_int
 FindFirstFileW
 os__log
+common__set_vec3_with_id
 hash_dot_wyhash__wymum
 math_dot_bits__reverse_bytes_32
 os__flush_stdout
@@ -263,6 +274,7 @@ atan
 WSAGetLastError
 _putenv
 os__is_link
+common__glm_vec3_crossn
 math_dot_bits__trailing_zeros_8
 log2
 os__mkdir_all
@@ -271,7 +283,6 @@ math_dot_bits__rotate_left_16
 read__file_in_string
 qsort
 compare_rep_index
-glm__rotation_x_y_z_model
 strconv_dot_ftoa__mul_pow5_invdiv_pow2
 print_backtrace_skipping_top_frames_mingw
 URLDownloadToFile
@@ -288,6 +299,7 @@ os__executable
 mktime
 ftell
 math__digits
+common__glm_vec3_norm2
 math__log_n
 fgets
 os__get_line
@@ -361,18 +373,21 @@ fwrite
 getenv
 gg__arc_vertices
 f32_abs
+common__glm_vec3_cross
 cos
 hash_dot_wyhash__sum64_string
 hash_dot_wyhash__wyrotr
 compare_ints
 time__day_of_week
 math_dot_bits__leading_zeros_8
+common__glm_vec3_normalize
 exp2
 os__is_abs
 glm__f32_calloc
 f64_abs
 math__gcd
 RegOpenKeyExW
+common__set_mat4_with_id
 glfwGetFramebufferSize
 time__make_unix_time
 gl__create_shader
@@ -381,6 +396,7 @@ getpid
 strconv_dot_ftoa__mul_pow5_div_pow2
 glm__ortho
 strconv_dot_ftoa__pow5_factor_32
+gl__disable_vertex_attrib_array
 gg__set_mode_fill
 gl__enable
 gl__uni_location
@@ -403,6 +419,7 @@ strconv_dot_ftoa__get_string_special
 os__vfopen
 os__file_size
 getcwd
+common__perspective
 _wrename
 os__signal
 vschannel_init
@@ -415,6 +432,7 @@ math_dot_bits__len_16
 sqrtf
 isdigit
 fputs
+common__lookat
 os__init_os_args_wide
 GetCurrentProcess
 wyhash
@@ -475,6 +493,7 @@ rmdir
 exp
 read__read_into_object
 signal
+common__view_matrix
 math__exp
 os__exists
 glUniformMatrix4fv
@@ -529,7 +548,6 @@ hash_dot_wyhash__wyr8
 gl__gen_texture
 math__min
 strconv_dot_ftoa__bool_to_u64
-glm__look_at
 glUniform3fv
 sigaction
 backtrace_symbols
@@ -583,11 +601,11 @@ os__flush
 os__vpclose
 math__lcm
 gl__draw_elements
+common__mat4
 chdir
 os__sigint_to_signal_name
 stbi__set_flip_vertically_on_load
 gl__enable_vertex_attrib_array
-glm__view_matrix
 os__create
 _wsystem
 glm__translate

@@ -11,6 +11,7 @@ import shader
 import read
 import object
 import math
+import common
 
 struct Game {
 mut:
@@ -20,15 +21,16 @@ mut:
 	width    int
 	main_wnd &glfw.Window
 	draw_fn  voidptr
-	obj		 &object.Object
+	objects  []&object.Object
+	//obj		 &object.Object
 	prog 	 int
-	vao 	 u32
-	vbo_v	 u32
-	vbo_t	 u32
-	vbo_n	 u32
+	//vao 	 u32
+	//vbo_v	 u32
+	//vbo_t	 u32
+	//vbo_n	 u32
 	persp  	 glm.Mat4
 	view   	 glm.Mat4
-	model	 glm.Mat4
+	//model	 glm.Mat4
 	
 	texture_diff_id u32
 	texture_norm_id u32
@@ -49,9 +51,9 @@ fn main() {
 	height := 600
 	
 	mut pos := glm.f32_calloc(3)
-	pos[0] = 4.0
-	pos[1] = 3.0
-	pos[2] = 3.0
+	pos[0] = 1.0
+	pos[1] = 0.0
+	pos[2] = 1.0
 	
 	mut direction := glm.f32_calloc(3)
 	direction[0] = 0.0
@@ -70,15 +72,16 @@ fn main() {
 		width: width	
 		main_wnd: 0
 		draw_fn: 0
-		obj: 0
+		objects: []
+		//obj: 0
 		prog: 0
-		vao: 0
-		vbo_v: 0
-		vbo_t: 0
-		vbo_n: 0
-		persp: glm.perspective(math.radians(45.0), 4.0/3.0, 0.1, 100.0)
-		view: glm.lookat(pos, direction, up)
-		model: glm.rotation_x_y_z_model(0)
+		//vao: 0
+		//vbo_v: 0
+		//vbo_t: 0
+		//vbo_n: 0
+		persp: common.perspective(math.radians(90.0), 4.0/3.0, 0.1, 100.0)
+		view: common.lookat(pos, direction, up)
+		//model: common.rotation_x_y_z_model(0, 3.0, 0, 0)
 		
 		texture_diff_id: 0
 		texture_norm_id: 0
@@ -102,11 +105,8 @@ fn main() {
 	})
 	
 	v_arr, vt_arr, vn_arr := read.read_into_object(read.file_in_string("cube.obj", 1))
-	game.obj = &object.Object {
-		vertices: v_arr
-		textures: vt_arr
-		normals : vn_arr
-	}
+	
+	mut first_obj := object.create_object(v_arr, vt_arr, vn_arr)
 	
 	//window.onkeydown(key_down)
 	game.main_wnd = window
@@ -126,61 +126,103 @@ fn main() {
 	fragment_shader := read.file_in_string("fragment_shader.txt", 0)
 	game.prog = shader.new_shader_program(vertex_shader, fragment_shader)
 
-	game.view_id  = gl.uni_location(game.prog, "view")
-	game.persp_id = gl.uni_location(game.prog, "perspective")
-	game.model_id = gl.uni_location(game.prog, "model")
-	game.t_dif_id = gl.uni_location(game.prog, "diffuse_tex")
-	game.t_nrm_id = gl.uni_location(game.prog, "normal_tex")
-	game.light_id = gl.uni_location(game.prog, "u_light")
+	game.view_id  = common.uni_location(game.prog, "view")
+	game.persp_id = common.uni_location(game.prog, "perspective")
+	game.model_id = common.uni_location(game.prog, "model")
+	game.t_dif_id = common.uni_location(game.prog, "diffuse_tex")
+	game.t_nrm_id = common.uni_location(game.prog, "normal_tex")
+	game.light_id = common.uni_location(game.prog, "u_light")
 	
 	game.texture_diff_id = game.gg.create_image('tuto-14-diffuse.jpg', 0)
 	game.texture_norm_id = game.gg.create_image('tuto-14-normal.png', 0)
 	
-	game.vao = gl.gen_vertex_array()
-	gl.bind_vao(game.vao)
-	game.vbo_v = gl.gen_buffer()
-	game.vbo_t = gl.gen_buffer()
-	game.vbo_n = gl.gen_buffer()
+	first_obj.bind_buffers()
 	
-	gl.testing()
+	first_obj.x = -15.0
+	first_obj.y = 0.0
+	first_obj.z = -15.0
+	
+	game.objects << first_obj
+	
+	common.testing()
 	
 	go game.run()
+	
+	mut last_time := common.glfw_get_time()
+	mut nb_frames := 0
+	
+	max := 15.0
+	min := -15.0
+	
+	max0 := 0.0
+	min0 := -30.0
+	
+	common.rand_srand_null()
+	
 	for {
 		if window.should_close() {
 			break
 		}
+		
+		current_time := common.glfw_get_time()
+        nb_frames++
+        if ( current_time - last_time >= 1.0 ){
+            printf("%f ms/frame\n", 1000.0/(f32(nb_frames)))
+            nb_frames = 0
+			last_time += 1.0
+			
+			mut new_obj := object.create_object(v_arr, vt_arr, vn_arr)
+			new_obj.x = common.rand_float_between_max_min(max0, min0)
+			new_obj.y = common.rand_float_between_max_min(max, min)
+			new_obj.z = -25.0
+			new_obj.bind_buffers()
+			game.objects << new_obj
+			
+        }
+		
 		gl.clear()
 		gl.clear_color(0, 0, 255, 255)
-		gl.use_program(game.prog)
 		
-		gl.set_mat4_with_id(game.view_id, game.view)
-		gl.set_mat4_with_id(game.persp_id, game.persp)
-		gl.set_mat4_with_id(game.model_id, game.model)
-		gl.set_vec3_with_id(game.light_id, &game.u_light[0])
+		for obj in game.objects {
+			gl.use_program(game.prog)
+			
+			common.set_mat4_with_id(game.view_id, game.view)
+			common.set_mat4_with_id(game.persp_id, game.persp)
+			common.set_mat4_with_id(game.model_id, obj.model)
+			common.set_vec3_with_id(game.light_id, &game.u_light[0])
+			
+			game.draw_object(obj)
+			
+		}
 		
-		game.draw_object()
 		window.swap_buffers()
 		glfw.wait_events()
+		glfw.post_empty_event()
 	}
 }
 
-fn (game mut Game) update_model() {
-	game.t += 0.01
-	if (game.t > 360) {
-		game.t = 0
-	}
-	game.model = glm.rotation_x_y_z_model(game.t)
+fn (game mut Game) update_model(obj mut object.Object) {
+	obj.model = common.rotation_x_y_z_model(game.t, obj.x, obj.y, obj.z)
 }
 
 fn (game mut Game) run() {
-	for {
-		game.update_model()		
-		glfw.post_empty_event() // Refresh
+	for {	
+		
+		for obj in game.objects {
+			game.update_model(mut obj)
+		}
+		
+		//glfw.post_empty_event() // Refresh
 		time.sleep_ms(1)
+		
+		game.t += 0.01
+		if (game.t > 360) {
+			game.t = 0
+		}
 	}
 }
 
-fn (game &Game) draw_object() {
+fn (game &Game) draw_object(obj object.Object) {
 	
 	// TEXTURES
 	gl.active_texture(C.GL_TEXTURE0)
@@ -192,20 +234,20 @@ fn (game &Game) draw_object() {
 	gl.set_int_with_id(game.t_nrm_id, 1)
 	
 	// OBJECT ARRAYS
-	gl.set_vbo(game.vbo_v, game.obj.vertices, C.GL_STATIC_DRAW)
+	gl.set_vbo(obj.vbo_v, obj.vertices, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(0)
 	gl.vertex_attrib_pointer(0, 3, C.GL_FLOAT, false, 0, 0)
 	
-	gl.set_vbo(game.vbo_t, game.obj.textures, C.GL_STATIC_DRAW)
+	gl.set_vbo(obj.vbo_t, obj.textures, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(1)
 	gl.vertex_attrib_pointer(1, 2, C.GL_FLOAT, false, 0, 0)
 	
-	gl.set_vbo(game.vbo_n, game.obj.normals, C.GL_STATIC_DRAW)
+	gl.set_vbo(obj.vbo_n, obj.normals, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(2)
 	gl.vertex_attrib_pointer(2, 3, C.GL_FLOAT, false, 0, 0)
 	
 	// OBJECT DRAW
-	gl.draw_arrays(C.GL_TRIANGLES, 0, game.obj.vertices.len)
+	gl.draw_arrays(C.GL_TRIANGLES, 0, obj.vertices.len)
 	
 	// DISABLE ARRAYS
 	gl.disable_vertex_attrib_array(0)
