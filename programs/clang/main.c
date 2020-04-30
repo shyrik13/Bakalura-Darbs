@@ -96,7 +96,7 @@ void display( GLFWwindow* window )
     GLuint texture_diffID = (GLuint) glGetUniformLocation(programID, "diffuse_tex");
     GLuint texture_normID = (GLuint) glGetUniformLocation(programID, "normal_tex");
 
-    init_gl_object((struct Object *)(object_head->data));
+    //init_gl_object((struct Object *)(object_head->data));
 
     double lastTime = glfwGetTime();
     int nbFrames = 0;
@@ -107,14 +107,33 @@ void display( GLFWwindow* window )
     float max0 = 0.0f;
     float min0 = -30.0f;
 
+    int polygon = 12;
+    int object_count = 1;
+
+    time_t rawtime;
+    struct tm * timeinfo;
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+    printf ( "%s polygons : %d objects : %d \n", asctime(timeinfo), polygon, object_count);
+
     srand((unsigned int)time(NULL));
 
     do {
 
+        if (object_count >= 500) {
+            glfwSetWindowShouldClose(window, 1);
+        }
+
         double currentTime = glfwGetTime();
         nbFrames++;
         if ( currentTime - lastTime >= 1.0 ){
-            printf("%f ms/frame\n", 1000.0/((double)nbFrames));
+
+            polygon += 12;
+            object_count++;
+            printf ( "%s polygons : %d objects : %d \n", asctime(timeinfo), polygon, object_count);
+
+            //printf("%f ms/frame\n", 1000.0/((double)nbFrames));
             nbFrames = 0;
             lastTime += 1.0;
 
@@ -123,7 +142,7 @@ void display( GLFWwindow* window )
             obj.y = (((float)(rand()) / (float)(RAND_MAX)) * (max - min)) + min;
             //cube.z = (((float)(rand()) / (float)(RAND_MAX)) * (max0 - min)) + min;
             obj.z = -25.0f;
-            init_gl_object(&obj);
+            //init_gl_object(&obj);
             push(&object_head, &obj, sizeof(obj));
 
         }
@@ -143,6 +162,7 @@ void display( GLFWwindow* window )
 
             glUseProgram(programID);
 
+            glGenVertexArrays(1, &(object.vertexArrayID));
             glBindVertexArray(object.vertexArrayID);
 
             glUniformMatrix4fv(view_matrixID, 1, GL_FALSE, &view[0][0]);
@@ -160,7 +180,9 @@ void display( GLFWwindow* window )
             glUniform1i(texture_normID, 2);
 
             glEnableVertexAttribArray(0);
+            glGenBuffers(1, &(object.vertexbuffer));
             glBindBuffer(GL_ARRAY_BUFFER, object.vertexbuffer);
+            glBufferData(GL_ARRAY_BUFFER, object.size_positions * sizeof(float), object.positions, GL_STATIC_DRAW);
             glVertexAttribPointer(
                     0,
                     3,
@@ -171,7 +193,9 @@ void display( GLFWwindow* window )
             );
 
             glEnableVertexAttribArray(1);
+            glGenBuffers(1, &(object.uvbuffer));
             glBindBuffer(GL_ARRAY_BUFFER, object.uvbuffer);
+            glBufferData(GL_ARRAY_BUFFER, object.size_textures * sizeof(float), object.textures, GL_STATIC_DRAW);
             glVertexAttribPointer(
                     1,
                     2,
@@ -182,7 +206,9 @@ void display( GLFWwindow* window )
             );
 
             glEnableVertexAttribArray(2);
+            glGenBuffers(1, &(object.unbuffer));
             glBindBuffer(GL_ARRAY_BUFFER, object.unbuffer);
+            glBufferData(GL_ARRAY_BUFFER, object.size_normals * sizeof(float), object.normals, GL_STATIC_DRAW);
             glVertexAttribPointer(
                     2,                                // attribute. No particular reason for 2, but must match the layout in the shader.
                     3,                                // size
@@ -197,6 +223,11 @@ void display( GLFWwindow* window )
             glDisableVertexAttribArray(0);
             glDisableVertexAttribArray(1);
             glDisableVertexAttribArray(2);
+
+            glDeleteBuffers(1, &object.vertexbuffer);
+            glDeleteBuffers(1, &object.uvbuffer);
+            glDeleteBuffers(1, &object.unbuffer);
+            glDeleteVertexArrays(1, &object.vertexArrayID);
 
             node = node->next;
         }
@@ -219,17 +250,17 @@ void display( GLFWwindow* window )
     } while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
              glfwWindowShouldClose(window) == 0);
 
-    struct Node *node = object_head;
-    while (node != NULL) {
-
-        struct Object object = *(struct Object *)(node->data);
-        glDeleteBuffers(1, &object.vertexbuffer);
-        glDeleteBuffers(1, &object.uvbuffer);
-        glDeleteBuffers(1, &object.unbuffer);
-        glDeleteVertexArrays(1, &object.vertexArrayID);
-
-        node = node->next;
-    }
+    //struct Node *node = object_head;
+    //while (node != NULL) {
+//
+    //    struct Object object = *(struct Object *)(node->data);
+    //    glDeleteBuffers(1, &object.vertexbuffer);
+    //    glDeleteBuffers(1, &object.uvbuffer);
+    //    glDeleteBuffers(1, &object.unbuffer);
+    //    glDeleteVertexArrays(1, &object.vertexArrayID);
+//
+    //    node = node->next;
+    //}
 
     glDeleteProgram(programID);
     glDeleteTextures(1, &texture_diff);

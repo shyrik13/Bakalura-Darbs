@@ -10,7 +10,7 @@ pub fn testing() {
 	C.glEnable(C.GL_DEPTH_TEST) // Depth Testing
     C.glDepthFunc(C.GL_LEQUAL)
     C.glDisable(C.GL_CULL_FACE)
-    //C.glCullFace(C.GL_BACK)
+    C.glCullFace(C.GL_BACK)
 }
 
 pub fn set_mat4_with_id(mat4_id u32, m glm.Mat4) {
@@ -232,4 +232,20 @@ pub fn rand_float_between_max_min(max, min f32) f32 {
 	return (f32(C.rand())/f32(C.RAND_MAX) * (max - min)) + min
 }
 
+pub fn delete_buffer(vbo u32) {
+	C.glDeleteBuffers(1, &vbo)
+}
 
+pub fn delete_vertex_array(vao u32) {
+	C.glDeleteVertexArrays(1, &vao)
+}
+
+pub fn gen_buffer(vbo &u32) {
+	//vbo = u32(0)
+	C.glGenBuffers(1, vbo)
+}
+
+pub fn gen_vertex_array(vao &u32) {
+	//vao = u32(0)
+	C.glGenVertexArrays(1, vao)
+}

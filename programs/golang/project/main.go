@@ -15,6 +15,7 @@ import (
 	"math"
 	"math/rand"
 	"runtime"
+	"time"
 )
 
 const width, height = 1200, 600
@@ -85,7 +86,7 @@ func main() {
 
 	// VERTEX DATA CONFIGURE
 
-	myObject.InitGlObject(myObject)
+	//myObject.InitGlObject(myObject)
 
 	defer gl.DeleteTextures(1, &textureDiff)
 	defer gl.DeleteTextures(1, &textureNorm)
@@ -104,15 +105,29 @@ func main() {
 	var max0 = float32(0.0)
 	var min0 = float32(-30.0)
 
+	polygon := 12
+	object_count := 1
+
+	timeNow := time.Now()
+	fmt.Printf("%s polygons : %d objects : %d \n", timeNow.Format("2006-01-02 15:04:05"), polygon, object_count)
 	setupScene()
 	for !window.ShouldClose() {
+
+		if object_count >= 500 {
+			window.SetShouldClose(true)
+		}
 
 		var currentTime = glfw.GetTime()
 		nbFrames++
 		if currentTime-lastTime >= 1.0 {
-			fmt.Printf("%f ms/frame \n", 1000.0/(float32(nbFrames)))
+			//fmt.Printf("%f ms/frame \n", 1000.0/(float32(nbFrames)))
 			nbFrames = 0
 			lastTime += 1.0
+
+			polygon += 12
+			object_count++
+			timeNow := time.Now()
+			fmt.Printf("%s polygons : %d objects : %d \n", timeNow.Format("2006-01-02 15:04:05"), polygon, object_count)
 
 			obj := object.New(vertices, textures, normals)
 			obj.X = min0 + rand.Float32()*(max0-min0)
@@ -120,7 +135,7 @@ func main() {
 			obj.Z = -25.0
 
 			objects = append(objects, obj)
-			obj.InitGlObject(obj)
+			//obj.InitGlObject(obj)
 
 		}
 
@@ -130,6 +145,8 @@ func main() {
 		for _, obj := range objects {
 
 			gl.UseProgram(program)
+
+			gl.GenVertexArrays(1, &obj.VertexArrayID)
 			gl.BindVertexArray(obj.VertexArrayID)
 
 			obj.InitGlObjectModel(obj, c, s)
@@ -148,17 +165,23 @@ func main() {
 			gl.Uniform1i(textureNormID, 1)
 
 			vertAttrib := uint32(gl.GetAttribLocation(program, gl.Str("position\x00")))
+			gl.GenBuffers(1, &obj.Vertexbuffer)
 			gl.BindBuffer(gl.ARRAY_BUFFER, obj.Vertexbuffer)
+			gl.BufferData(gl.ARRAY_BUFFER, len(obj.VertexArray)*4, gl.Ptr(obj.VertexArray), gl.STATIC_DRAW)
 			gl.EnableVertexAttribArray(vertAttrib)
 			gl.VertexAttribPointer(vertAttrib, 3, gl.FLOAT, false, 0, gl.PtrOffset(0))
 
 			txtAttrib := uint32(gl.GetAttribLocation(program, gl.Str("tex_coords\x00")))
+			gl.GenBuffers(1, &obj.Uvbuffer)
 			gl.BindBuffer(gl.ARRAY_BUFFER, obj.Uvbuffer)
+			gl.BufferData(gl.ARRAY_BUFFER, len(obj.TextureArray)*4, gl.Ptr(obj.TextureArray), gl.STATIC_DRAW)
 			gl.EnableVertexAttribArray(txtAttrib)
 			gl.VertexAttribPointer(txtAttrib, 2, gl.FLOAT, false, 0, gl.PtrOffset(0))
 
 			normAttrib := uint32(gl.GetAttribLocation(program, gl.Str("normal\x00")))
+			gl.GenBuffers(1, &obj.Unbuffer)
 			gl.BindBuffer(gl.ARRAY_BUFFER, obj.Unbuffer)
+			gl.BufferData(gl.ARRAY_BUFFER, len(obj.NormalArray)*4, gl.Ptr(obj.NormalArray), gl.STATIC_DRAW)
 			gl.EnableVertexAttribArray(normAttrib)
 			gl.VertexAttribPointer(normAttrib, 3, gl.FLOAT, false, 0, gl.PtrOffset(0))
 
@@ -167,6 +190,11 @@ func main() {
 			gl.DisableVertexAttribArray(vertAttrib)
 			gl.DisableVertexAttribArray(txtAttrib)
 			gl.DisableVertexAttribArray(normAttrib)
+
+			gl.DeleteBuffers(1, &obj.Vertexbuffer)
+			gl.DeleteBuffers(1, &obj.Uvbuffer)
+			gl.DeleteBuffers(1, &obj.Unbuffer)
+			gl.DeleteVertexArrays(1, &obj.VertexArrayID)
 
 		}
 
@@ -180,13 +208,6 @@ func main() {
 		c = math.Cos(t)
 		s = math.Sin(t)
 
-	}
-
-	for _, obj := range objects {
-		gl.DeleteBuffers(1, &obj.Vertexbuffer)
-		gl.DeleteBuffers(1, &obj.Uvbuffer)
-		gl.DeleteBuffers(1, &obj.Unbuffer)
-		gl.DeleteBuffers(1, &obj.VertexArrayID)
 	}
 
 }

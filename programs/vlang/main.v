@@ -124,7 +124,7 @@ fn main() {
 	game.texture_diff_id = game.gg.create_image('tuto-14-diffuse.jpg', 0)
 	game.texture_norm_id = game.gg.create_image('tuto-14-normal.png', 0)
 	
-	first_obj.bind_buffers()
+	//first_obj.bind_buffers()
 	
 	first_obj.x = -15.0
 	first_obj.y = 0.0
@@ -145,6 +145,10 @@ fn main() {
 	max0 := 0.0
 	min0 := -30.0
 	
+	mut plygons := 12
+	mut object_count := 1
+	println(time.now().str() + " plygons : " + plygons.str() + " objects : " + object_count.str())
+	
 	common.rand_srand_null()
 	
 	for {
@@ -152,20 +156,25 @@ fn main() {
 			break
 		}
 		
+		if ( object_count > 500 ) {
+			break
+		}
+
 		current_time := common.glfw_get_time()
         nb_frames++
         if ( current_time - last_time >= 1.0 ){
-            printf("%f ms/frame\n", 1000.0/(f32(nb_frames)))
+            //printf("%f ms/frame\n", 1000.0/(f32(nb_frames)))
+			plygons += 12
+			object_count++
+			println(time.now().str() + " plygons : " + plygons.str() + " objects : " + object_count.str())
             nb_frames = 0
 			last_time += 1.0
-			
 			mut new_obj := object.create_object(v_arr, vt_arr, vn_arr)
 			new_obj.x = common.rand_float_between_max_min(max0, min0)
 			new_obj.y = common.rand_float_between_max_min(max, min)
 			new_obj.z = -25.0
-			new_obj.bind_buffers()
+			//new_obj.bind_buffers()
 			game.objects << new_obj
-			
         }
 		
 		gl.clear()
@@ -180,7 +189,6 @@ fn main() {
 			common.set_vec3_with_id(game.light_id, &game.u_light[0])
 			
 			game.draw_object(obj)
-			
 		}
 		
 		window.swap_buffers()
@@ -211,6 +219,9 @@ fn (game mut Game) run() {
 
 fn (game &Game) draw_object(obj object.Object) {
 	
+	//obj.vao = gl.gen_vertex_array()
+	common.gen_vertex_array(&obj.vao)
+	gl.bind_vao(obj.vao)
 	// TEXTURES
 	gl.active_texture(C.GL_TEXTURE0)
 	gl.bind_2d_texture(game.texture_diff_id)
@@ -221,14 +232,20 @@ fn (game &Game) draw_object(obj object.Object) {
 	gl.set_int_with_id(game.t_nrm_id, 1)
 	
 	// OBJECT ARRAYS
+	//obj.vbo_v = gl.gen_buffer()
+	common.gen_buffer(&obj.vbo_v)
 	gl.set_vbo(obj.vbo_v, obj.vertices, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(0)
 	gl.vertex_attrib_pointer(0, 3, C.GL_FLOAT, false, 0, 0)
 	
+	//obj.vbo_t = gl.gen_buffer()
+	common.gen_buffer(&obj.vbo_t)
 	gl.set_vbo(obj.vbo_t, obj.textures, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(1)
 	gl.vertex_attrib_pointer(1, 2, C.GL_FLOAT, false, 0, 0)
 	
+	//obj.vbo_n = gl.gen_buffer()
+	common.gen_buffer(&obj.vbo_n)
 	gl.set_vbo(obj.vbo_n, obj.normals, C.GL_STATIC_DRAW)
 	gl.enable_vertex_attrib_array(2)
 	gl.vertex_attrib_pointer(2, 3, C.GL_FLOAT, false, 0, 0)
@@ -241,4 +258,8 @@ fn (game &Game) draw_object(obj object.Object) {
 	gl.disable_vertex_attrib_array(1)
 	gl.disable_vertex_attrib_array(2)
 	
+	common.delete_buffer(obj.vbo_v)
+	common.delete_buffer(obj.vbo_t)
+	common.delete_buffer(obj.vbo_n)
+	common.delete_vertex_array(obj.vao)
 }

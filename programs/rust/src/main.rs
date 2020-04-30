@@ -2,12 +2,14 @@
 extern crate glium;
 extern crate image;
 extern crate rand;
+extern crate chrono;
 
 mod common;
 mod objects;
 
 use std::io::Cursor;
 use rand::Rng;
+
 
 fn main() {
     #[allow(unused_imports)]
@@ -22,13 +24,12 @@ fn main() {
     let cb = glutin::ContextBuilder::new().with_depth_buffer(24);
     let display = glium::Display::new(wb, cb, &event_loop).unwrap();
 
-    // Object loading from file and shape creation
+    // Object loading from file
     let vertex = common::read::read_into_vertex_vector("cube.obj");
     let mut object :objects::Object = objects::Object::new(vertex);
     object.set_x_y_z(-3.4, 0.0, 2.7);
     object.init_gl_object_model(t.cos(), t.sin());
 
-    let shape = glium::vertex::VertexBuffer::new(&display, &(object.vertices)).unwrap();
     let indices = glium::index::NoIndices(glium::index::PrimitiveType::TrianglesList);
 
     let mut vec_objects: Vec<objects::Object> = Vec::new();
@@ -65,13 +66,26 @@ fn main() {
     let max0 :f32 = 18.0;
     let min0 :f32 = -12.0;
 
+    let mut polygon = 12;
+    let mut object_count = 1;
+
+    println!("{:?} polygons {} objects {}", chrono::offset::Local::now(), polygon, object_count);
+
     event_loop.run(move |event, _, control_flow| {
+
+        if object_count >= 500 {
+            *control_flow = glutin::event_loop::ControlFlow::Exit;
+            return;
+        }
 
         let current_time = std::time::Instant::now();
         nb_frames += 1.0;
 
         if current_time - last_time >= std::time::Duration::from_secs(1) {
-            std::println!("{} ms/frame", (1000.0/nb_frames));
+            //std::println!("{} ms/frame", (1000.0/nb_frames));
+            object_count += 1;
+            polygon += 12;
+            println!("{:?} polygons {} objects {}", chrono::offset::Local::now(), polygon, object_count);
             nb_frames = 0.0;
             last_time = std::time::Instant::now();
 
@@ -155,6 +169,7 @@ fn main() {
                 normal_tex: &normal_map
             };
             // Object in scene draw
+            let shape = glium::vertex::VertexBuffer::new(&display, &(object.vertices)).unwrap();
             target.draw(&shape, &indices, &program, &uniforms,
                         &params).unwrap();
         }

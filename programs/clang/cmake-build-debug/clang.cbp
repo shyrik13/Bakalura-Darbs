@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="clang"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clang">
+				<Option output="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/clang.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/OpenGL/Libraries/glfw-3.3.2/include"/>
+					<Add directory="D:/OpenGL/Libraries/cglm-0.7.1/cglm/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clang"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="clang/fast">
+				<Option output="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/clang.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/OpenGL/Libraries/glfw-3.3.2/include"/>
+					<Add directory="D:/OpenGL/Libraries/cglm-0.7.1/cglm/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clang/fast"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/node.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/node.h">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/read.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/read.h">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/shader.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/shader.h">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/texture.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/common/texture.h">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/main.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/objects/object.c">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/objects/object.h">
+			<Option target="clang"/>
+		</Unit>
+		<Unit filename="C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,3 @@
+C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/CMakeFiles/clang.dir
+C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/shyri/Desktop/RTU/bakalaura darbs/my/Bakalura-Darbs/programs/clang/cmake-build-debug/CMakeFiles/rebuild_cache.dir

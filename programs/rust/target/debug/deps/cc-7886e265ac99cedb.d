@@ -1,0 +1,12 @@
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\rust\target\debug\deps\cc-7886e265ac99cedb.rmeta: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\registry.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\winapi.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\com.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\setup_config.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\windows_registry.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\rust\target\debug\deps\libcc-7886e265ac99cedb.rlib: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\registry.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\winapi.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\com.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\setup_config.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\windows_registry.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\rust\target\debug\deps\cc-7886e265ac99cedb.d: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\registry.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\winapi.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\com.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\setup_config.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\windows_registry.rs
+
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\lib.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\registry.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\winapi.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\com.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\setup_config.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\cc-1.0.50\src\windows_registry.rs:
