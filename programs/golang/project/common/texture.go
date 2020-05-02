@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	TEXTURE = "res/texture/"
+	TEXTURE = "./res/texture/"
 )
 
 func NewTexture(fileName string) (uint32, error) {

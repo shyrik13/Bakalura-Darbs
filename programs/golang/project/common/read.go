@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	FILES  = "res/files/"
-	SHADER = "res/shader/"
+	FILES  = "./res/files/"
+	SHADER = "./res/shader/"
 )
 
 func FileInString(fileName string, i int) string {
