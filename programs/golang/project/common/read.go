@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"strconv"
@@ -24,7 +23,6 @@ func FileInString(fileName string, i int) string {
 	}
 
 	text := string(content)
-	fmt.Println(text)
 	return text
 }
 

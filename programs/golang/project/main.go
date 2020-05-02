@@ -67,6 +67,8 @@ func main() {
 	myObject.Y = 0.0
 	myObject.Z = -15.0
 
+	fmt.Printf("%+v\n", myObject)
+
 	var objects []*object.Object
 	objects = append(objects, myObject)
 
