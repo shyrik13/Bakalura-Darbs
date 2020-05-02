@@ -67,8 +67,6 @@ func main() {
 	myObject.Y = 0.0
 	myObject.Z = -15.0
 
-	fmt.Printf("%+v\n", myObject)
-
 	var objects []*object.Object
 	objects = append(objects, myObject)
 
@@ -187,8 +185,7 @@ func main() {
 			gl.EnableVertexAttribArray(normAttrib)
 			gl.VertexAttribPointer(normAttrib, 3, gl.FLOAT, false, 0, gl.PtrOffset(0))
 
-			fmt.Println(len(obj.VertexArray))
-			gl.DrawArrays(gl.TRIANGLES, 0, int32(len(obj.VertexArray)))
+			gl.DrawArrays(gl.TRIANGLES, 0, int32(len(obj.VertexArray))*8)
 
 			gl.DisableVertexAttribArray(vertAttrib)
 			gl.DisableVertexAttribArray(txtAttrib)
