@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab6a11a9-d5e7-424f-acd1-e1aed1f4d312" name="Default Changelist" comment="">
+    <list default="true" id="ab6a11a9-d5e7-424f-acd1-e1aed1f4d312" name="Default Changelist" comment="golang fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
@@ -62,6 +78,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Go Build.go build project/" />
       <item itemvalue="Go Build.go build" />
       <item itemvalue="Go Build.go build main.go" />
     </list>
@@ -126,7 +143,35 @@
       <option name="project" value="LOCAL" />
       <updated>1588420983399</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="golang fix">
+      <created>1588421970550</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588421970550</updated>
+    </task>
+    <task id="LOCAL-00007" summary="golang fix">
+      <created>1588421998300</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588421998300</updated>
+    </task>
+    <task id="LOCAL-00008" summary="golang fix">
+      <created>1588428344832</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588428344832</updated>
+    </task>
+    <task id="LOCAL-00009" summary="golang fix">
+      <created>1588430227933</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588430227933</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,37 +200,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="686" y="191" key="#go_build_project/0.0.1920.1040@0.0.1920.1040" timestamp="1588419259796" />
-    <state x="498" y="117" key="CommitChangelistDialog2" timestamp="1588420981438">
+    <state x="498" y="117" key="CommitChangelistDialog2" timestamp="1588430226526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="498" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588420981438" />
+    <state x="498" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588430226526" />
     <state x="660" y="226" key="FileChooserDialogImpl" timestamp="1588421364169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="660" y="226" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588421364169" />
-    <state width="1876" height="175" key="GridCell.Tab.0.bottom" timestamp="1588420896157">
+    <state width="1876" height="175" key="GridCell.Tab.0.bottom" timestamp="1588430184816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
-    <state width="1876" height="175" key="GridCell.Tab.0.center" timestamp="1588420896157">
+    <state width="1876" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588430184816" />
+    <state width="1876" height="175" key="GridCell.Tab.0.center" timestamp="1588430184815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
-    <state width="1876" height="175" key="GridCell.Tab.0.left" timestamp="1588420896157">
+    <state width="1876" height="175" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588430184815" />
+    <state width="1876" height="175" key="GridCell.Tab.0.left" timestamp="1588430184815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
-    <state width="1876" height="175" key="GridCell.Tab.0.right" timestamp="1588420896157">
+    <state width="1876" height="175" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588430184815" />
+    <state width="1876" height="175" key="GridCell.Tab.0.right" timestamp="1588430184815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
+    <state width="1876" height="175" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588430184815" />
     <state x="711" y="232" key="RollbackChangesDialog" timestamp="1587069555645">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="711" y="232" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587069555645" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588420985224">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588430230590">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588420985224" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588430230590" />
   </component>
 </project>
