@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab6a11a9-d5e7-424f-acd1-e1aed1f4d312" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../clang/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../clang/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../rust/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../rust/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../rust/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../../rust/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../rust/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/../../rust/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vlang/main.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../vlang/main.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vlang/modules/common/common.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../vlang/modules/common/common.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vlang/modules/object/object.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../vlang/modules/object/object.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../veidne/BakD_veidne_Aleksandrs_Korolko.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../veidne/BakD_veidne_Aleksandrs_Korolko.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../veidne/web sites.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../veidne/web sites.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +51,18 @@
       <output_directory value="$PROJECT_DIR$/../build/" />
       <method v="2" />
     </configuration>
+    <configuration name="go build" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="project" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-o" />
+      <parameters value="test.exe" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Go Build.go build project/" />
+      <item itemvalue="Go Build.go build" />
       <item itemvalue="Go Build.go build main.go" />
     </list>
     <recent_temporary>
@@ -110,7 +105,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586020608205</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="golang fix">
+      <created>1588419401300</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588419401300</updated>
+    </task>
+    <task id="LOCAL-00004" summary="golang fix">
+      <created>1588420914642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588420914642</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,48 +128,57 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="golang normalized cube" />
     <MESSAGE value="golang multiple objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="golang multiple objects" />
+    <MESSAGE value="golang fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="golang fix" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587068393188">
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588419321396">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587068393188" />
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588419321396" />
+    <state x="686" y="191" key="#go_build" timestamp="1588419324111">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="686" y="191" key="#go_build/0.0.1920.1040@0.0.1920.1040" timestamp="1588419324111" />
     <state x="686" y="203" key="#go_build_main.go" timestamp="1585003344539">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="686" y="203" key="#go_build_main.go/0.0.1920.1040@0.0.1920.1040" timestamp="1585003344539" />
-    <state x="498" y="117" key="CommitChangelistDialog2" timestamp="1586020605084">
+    <state x="686" y="191" key="#go_build_project" timestamp="1588419259796">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="498" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586020605084" />
+    <state x="686" y="191" key="#go_build_project/0.0.1920.1040@0.0.1920.1040" timestamp="1588419259796" />
+    <state x="498" y="117" key="CommitChangelistDialog2" timestamp="1588420913921">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="498" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588420913921" />
     <state x="660" y="226" key="FileChooserDialogImpl" timestamp="1588275647516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="660" y="226" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588275647516" />
-    <state width="1876" height="175" key="GridCell.Tab.0.bottom" timestamp="1587511228896">
+    <state width="1876" height="175" key="GridCell.Tab.0.bottom" timestamp="1588420896157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587511228896" />
-    <state width="1876" height="175" key="GridCell.Tab.0.center" timestamp="1587511228896">
+    <state width="1876" height="175" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
+    <state width="1876" height="175" key="GridCell.Tab.0.center" timestamp="1588420896157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587511228896" />
-    <state width="1876" height="175" key="GridCell.Tab.0.left" timestamp="1587511228896">
+    <state width="1876" height="175" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
+    <state width="1876" height="175" key="GridCell.Tab.0.left" timestamp="1588420896157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587511228896" />
-    <state width="1876" height="175" key="GridCell.Tab.0.right" timestamp="1587511228896">
+    <state width="1876" height="175" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
+    <state width="1876" height="175" key="GridCell.Tab.0.right" timestamp="1588420896157">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="175" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587511228896" />
+    <state width="1876" height="175" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588420896157" />
     <state x="711" y="232" key="RollbackChangesDialog" timestamp="1587069555645">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="711" y="232" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587069555645" />
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1586020612974">
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588420916938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586020612974" />
+    <state x="552" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588420916938" />
   </component>
 </project>
