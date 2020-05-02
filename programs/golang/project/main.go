@@ -187,6 +187,7 @@ func main() {
 			gl.EnableVertexAttribArray(normAttrib)
 			gl.VertexAttribPointer(normAttrib, 3, gl.FLOAT, false, 0, gl.PtrOffset(0))
 
+			fmt.Println(len(obj.VertexArray))
 			gl.DrawArrays(gl.TRIANGLES, 0, int32(len(obj.VertexArray)))
 
 			gl.DisableVertexAttribArray(vertAttrib)
