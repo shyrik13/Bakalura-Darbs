@@ -1,0 +1,14 @@
+[package]
+name = "redaktors"
+version = "0.1.0"
+authors = ["shyrik13 <shyrik13@inbox.lv>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+glium = "0.26.0-alpha3"
+image = "0.22"
+rand = "0.7.3"
+chrono = "0.4"
+cgmath = "0.17.0"
