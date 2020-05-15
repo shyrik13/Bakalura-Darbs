@@ -25,6 +25,12 @@ impl Object {
         self.x = x;
         self.y = y;
         self.z = z;
+        self.model = [
+            [1.0, 0.0, 0.0, 0.0],
+            [0.0, 1.0, 0.0, 0.0],
+            [0.0, 0.0, 1.0, 0.0],
+            [self.x, self.y, self.z, 1.0]
+        ]
     }
 
     pub fn init_gl_object_model(&mut self, c: f32, s: f32) {

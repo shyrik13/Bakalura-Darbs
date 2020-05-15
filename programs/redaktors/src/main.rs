@@ -116,7 +116,7 @@ fn main() {
                             Some(glutin::event::VirtualKeyCode::Space) => {
                                 let mut object :entity::Object = entity::Object::new(OBJECTS_NAMES[camera.choosen_object_num as usize]);
                                 object.set_x_y_z(camera.position[0], camera.position[1], camera.position[2]);
-                                object.init_gl_object_model(0.0, 1.0);
+                                //object.init_gl_object_model(0.0, 1.0);
                                 object.id = vec_objects.len() as i32;
                                 vec_objects.push(object);
                             }
@@ -178,34 +178,13 @@ fn main() {
         let (width, height) = target.get_dimensions();
         camera.calculate_projection_matrix(width as f32, height as f32);
 
-        let mut distance = std::f32::MAX;
+        let mut min_distance = std::f32::MAX;
+
+        let mut closest_object_id = -1;
 
         for object in vec_objects.iter_mut() {
 
-            let view_matrix: [[f32; 4]; 4] = camera.view_matrix.into();
-            let projection_matrix: [[f32; 4]; 4] = camera.projection_matrix.into();
-            let ray_direction: [f32; 3] = mouse_ray.direction.into();
-
-            let ray_start_position = camera.position;
-            let ray_end_position = ray_start_position + mouse_ray.direction * 2.0;
-            let ray_start_position: [f32; 3] = ray_start_position.into();
-            let ray_end_position: [f32; 3] = ray_end_position.into();
-
-            let uniforms = uniform! {
-                model: object.model,
-                view: view_matrix,
-                u_light: u_light,
-                perspective: projection_matrix,
-                diffuse_tex: &diffuse_texture_map[object.name],
-                normal_tex: &normal_texture_map[object.name],
-                mouse_ray: ray_end_position,
-                camera_position: ray_start_position,
-                mouse_position: camera.last_mouse_position,
-                target_dimensions: [width as f32, height as f32]
-            };
-
-            //let mut count = 0;
-            //let mut vertecies: Vec<[f32; 3]> = Vec::new();
+            object.init_gl_object_model(c, s);
 
             let mut model_view: Matrix4<f32> = Matrix4::from(object.model);
 
@@ -227,6 +206,10 @@ fn main() {
                 }
             };
 
+
+            model_view_3d.invert();
+            model_view_3d.transpose();
+
             let mouse_ray: Vector3<f32> = Vector3::from(entity::mouse_picker::calculate_mouse_ray(&camera, [SCREEN_WIDTH, SCREEN_HEIGHT]));
             let object_position = Vector3 {
                 x: object.x,
@@ -236,46 +219,74 @@ fn main() {
 
             let mut t = std::f32::MAX;
 
-            let mut vertecies: Vec<Vector3<f32>> = Vec::new();
+            let mut max_radius: f32 = 0.0;
+
+            let view_matrix_3d: Matrix3<f32> = Matrix3 {
+                x: Vector3 {
+                    x: camera.view_matrix.x.x,
+                    y: camera.view_matrix.x.y,
+                    z: camera.view_matrix.x.z
+                },
+                y: Vector3 {
+                    x: camera.view_matrix.y.x,
+                    y: camera.view_matrix.y.y,
+                    z: camera.view_matrix.y.z
+                },
+                z: Vector3 {
+                    x: camera.view_matrix.z.x,
+                    y: camera.view_matrix.z.y,
+                    z: camera.view_matrix.z.z
+                }
+            };
+
+            view_matrix_3d.invert();
+            view_matrix_3d.transpose();
+
+            let div = camera.position - object_position;
 
             for vertex in &vertex_map[object.name] {
 
-                if vertecies.len() == 0 {
-                    let mut normal_vec: Vector3<f32> = Vector3 {
-                        x: vertex.normal[0],
-                        y: vertex.normal[1],
-                        z: vertex.normal[2]
-                    };
+                let world_pos_3d: Vector3<f32> = view_matrix_3d * Vector3::from([vertex.position[0] ,vertex.position[1], vertex.position[2]]);
 
-                    normal_vec = model_view_3d * normal_vec;
-                    //println!("{:?}", normal_vec);
+                world_pos_3d.normalize();
+                let radius: f32 = (world_pos_3d.x.powf(2.0) + world_pos_3d.y.powf(2.0) + world_pos_3d.z.powf(2.0)).sqrt();
 
-                    let eq1: f32 = camera.position.dot(normal_vec);
-                    let eq2: f32 = mouse_ray.dot(normal_vec);
-                    let new_t = ((eq1) / eq2) * -1.0;
+                if radius > max_radius {
+                    max_radius = radius;
+                }
 
-                    if new_t > 0.0 && t >= new_t {
-                        //println!("{:?}", normal_vec);
-                        //println!("mouse_ray {:?}", mouse_ray);
-                        println!("{:?}", new_t);
-                        t = new_t;
-                        //println!("{:?}", (mouse_ray.direction + ray * t));
-                        vertecies.push(model_view_3d * Vector3::from(vertex.position));
-                    }
+            }
 
-                } else {
+            let b = mouse_ray.dot(div);
+            let c = div.dot(div) - max_radius.powf(2.0);
 
-                    vertecies.push(model_view_3d * Vector3::from(vertex.position));
+            if  b.powf(2.0) >= c {
 
-                    if vertecies.len() == 3 {
-                        let distance = entity::mouse_picker::is_ray_intersect_triangle(vertecies, camera.position, mouse_ray, t);
-                        println!("distance {:?}", distance);
-                        vertecies = Vec::new();
-                    }
+                let distance = (div.x.powf(2.0) + div.y.powf(2.0) + div.z.powf(2.0)).sqrt();
 
+                if distance < min_distance {
+                    closest_object_id = object.id;
+                    min_distance = distance;
                 }
             }
 
+        }
+
+        for object in vec_objects.iter_mut() {
+
+            let view_matrix: [[f32; 4]; 4] = camera.view_matrix.into();
+            let projection_matrix: [[f32; 4]; 4] = camera.projection_matrix.into();
+            let closest: bool = object.id == closest_object_id;
+
+            let uniforms = uniform! {
+                model: object.model,
+                view: view_matrix,
+                u_light: u_light,
+                perspective: projection_matrix,
+                diffuse_tex: &diffuse_texture_map[object.name],
+                normal_tex: &normal_texture_map[object.name],
+                closest: closest
+            };
             // Object in scene draw
             target.draw(&shape_map[object.name], &indices, &program, &uniforms,
                         &params).unwrap();

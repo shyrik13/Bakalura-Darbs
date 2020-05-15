@@ -10,6 +10,7 @@ out vec4 color;
 uniform vec3 u_light;
 uniform sampler2D diffuse_tex;
 uniform sampler2D normal_tex;
+uniform bool closest;
 
 const vec3 specular_color = vec3(1.0, 1.0, 1.0);
 
@@ -27,12 +28,6 @@ mat3 cotangent_frame(vec3 normal, vec3 pos, vec2 uv) {
 }
 
 void main() {
-
-    //if (t > 0.0) {
-    //    color = vec4(0.0, 0.0, 0.0, 1.0);
-    //    return;
-    //}
-
     vec3 diffuse_color = texture(diffuse_tex, v_tex_coords).rgb;
     vec3 ambient_color = diffuse_color * 0.1;
 
@@ -47,5 +42,9 @@ void main() {
     float specular = pow(max(dot(half_direction, normalize(real_normal)), 0.0), 16.0);
 
     color = vec4(ambient_color + diffuse * diffuse_color + specular * specular_color, 1.0);
+
+    if (closest) {
+        color = color * vec4(0.0, 1.0, 0.0, 1.0);
+    }
 
 }
