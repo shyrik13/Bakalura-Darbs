@@ -1,0 +1,7 @@
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\glutin_wgl_sys-5cdcbe78d71ee451.rmeta: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\glutin_wgl_sys-0.1.4\src\lib.rs C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_bindings.rs C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_extra_bindings.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\glutin_wgl_sys-5cdcbe78d71ee451.d: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\glutin_wgl_sys-0.1.4\src\lib.rs C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_bindings.rs C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_extra_bindings.rs
+
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\glutin_wgl_sys-0.1.4\src\lib.rs:
+C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_bindings.rs:
+C:\Users\shyri\Desktop\RTU\bakalaura\ darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\build\glutin_wgl_sys-1bfcc70a5e9a87ae\out/wgl_extra_bindings.rs:

@@ -1,0 +1,10 @@
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\crc32fast-d821a79bfd607089.rmeta: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\baseline.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\combine.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\mod.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\table.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\pclmulqdq.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\crc32fast-d821a79bfd607089.d: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\baseline.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\combine.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\mod.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\table.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\pclmulqdq.rs
+
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\lib.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\baseline.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\combine.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\mod.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\table.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\crc32fast-1.2.0\src\specialized\pclmulqdq.rs:

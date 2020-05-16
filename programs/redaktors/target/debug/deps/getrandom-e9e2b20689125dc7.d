@@ -1,0 +1,11 @@
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\getrandom-e9e2b20689125dc7.rmeta: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\util.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error_impls.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\windows.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\libgetrandom-e9e2b20689125dc7.rlib: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\util.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error_impls.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\windows.rs
+
+C:\Users\shyri\Desktop\RTU\bakalaura darbs\my\Bakalura-Darbs\programs\redaktors\target\debug\deps\getrandom-e9e2b20689125dc7.d: C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\lib.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\util.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error_impls.rs C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\windows.rs
+
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\lib.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\util.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\error_impls.rs:
+C:\Users\shyri\.cargo\registry\src\github.com-1ecc6299db9ec823\getrandom-0.1.14\src\windows.rs:
